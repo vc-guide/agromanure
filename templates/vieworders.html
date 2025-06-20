@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}View orders {% endblock %}
+{% block cor %}
+     {% for i in ord %}
+     <div style="display:grid; grid-template-columns:1fr 1fr 2fr;padding:15px;">
+     <div style="background-color:rgb(21, 143, 141);border-radius:20px;padding:10px;height:220px;display:flex;align-items:center;justify-content:center;margin-right:10px;">
+     <img src="{{i.product_imgurl}}" style="height:200px;width:150px;object-fit:contain;"></div>
+     <div style="background-color:rgb(189, 229, 217);border-radius:20px;padding:10px;margin-right:10px;text-align:center;">
+     <h3>{{i.product_name}}</h3>
+     <h3>Quantity: {{i.quantity}}</h3>
+     <h3>Total Price: Rs.{{i.totalprice}}.00</h3></div>
+     <div style="background-color:rgb(21, 143, 141);border-radius:20px;padding:10px;text-align:center;">
+     <h4>Delivery Address: {{i.Address}}</h4>
+     <h4>Phone No: {{i.phoneNo}}</h4>
+     <h6>Order ID: {{i.id}}</h6></div>
+     </div>
+     {% endfor %}
+     {% endblock %}
+   
+  

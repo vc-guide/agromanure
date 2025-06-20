@@ -1,0 +1,79 @@
+
+{%extends 'base.html' %}
+{% block title%}Products{% endblock %}
+{% block extra_css %}
+.product-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap:16px;
+  row-gap:20px;
+  margin-top:10px;
+}
+@media (max-width:750px){
+  .product-grid{
+    grid-template-columns:1fr 1fr 1fr
+  }
+}
+@media (min-width:800px){
+  .product-grid{
+    grid-template-columns:1fr 1fr 1fr 1fr;
+  }
+}
+@media(min-width:1000px){
+  .product-grid{
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+  }
+}
+.product-preview {
+  background-color: grey;
+  height:220px;
+  
+}
+.thumpnail-row {
+  /*background-color:aqua;*/
+  height:145px;
+  
+}
+.thumpnail{
+  height:145px;
+  width:100%;
+}
+.product-name {
+  background-color:lightpink;
+  height:33px;
+}
+.product-price {
+  background-color: rgb(189, 229, 217);
+  height:42px;
+  font-size: 17px;
+  position: relative;
+  
+  
+}
+.buynow{
+  background-color:rgb(100, 176, 100);
+  border:solid;
+  border-width:2px;
+  margin-top:2px;
+  border-color:rgb(79, 105, 79);
+  
+  margin-left:65px;
+  position:absolute;
+  
+}
+ {% endblock %}   
+{% block cor %} 
+     <main>
+      <section class="product-grid">
+        {% for i in pro %}
+        <div class="product-preview">
+          <div class="thumpnail-row">
+            <img class="thumpnail" src="{{i.pro_img.url}}">
+          </div>
+          <div class="product-name">{{i.pro_name}}</div>
+          <div class="product-price">Rs.{{i.pro_price}} <a href="{%url 'productview' i.pro_name %}">checknow</a> </div>
+        </div>
+        {% endfor %}
+      </section>
+     </main>
+  {% endblock %}

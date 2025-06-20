@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+<style>
+  .rama{
+    display:none;
+  }
+</style>
+{% block unwanted-content %}
+{% endblock %}
+{% block content %}
+   <div style="
+    
+    display:flex;
+    flex-direction:row;
+    height:80px;
+    align-items:center;">
+      <div style="height:60px;display:flex;align-items: center;font-size:50px;font-weight:600;
+      flex:3;margin-left:25px;min-width:300px;color:rgb(7, 72, 7);">Agro-Manuare</div>
+      <div style=" display:flex;background-color:lightpink;flex:2;"></div>
+      <div style="display:flex;flex:1;justify-content:center;"><div style="display:flex;flex:1;"></div>
+    <div style="display:flex;flex:1;"><a href="{%url 'logout'%}">logout</a></div></div>
+    </div>
+    {% endblock %}
+    
+    {% block cor %}
+    </div>
+    <div style="display:flex;flex-direction: row;">
+      <div style="display:flex;background-color:rgb(189, 229, 217); flex:1;">
+      <img src="" >
+      </div>
+      <div style=" display:flex;flex:1;height:417px;" class="carousel slide" id="carouselDemo" data-bs-wrap="false" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="2000">
+            <img src="{% static '/agromanure1.jpg' %}" class="w-100">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="{% static '/agromanure2.jpg' %}" class="w-100">
+          </div> 
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="{% static '/agromanure3.jpg' %}" class="w-100">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="{% static '/agromanure4.jpg' %}" class="w-100">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="{% static '/agromanure5.jpg' %}" class="w-100">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDemo" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselDemo" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+    {% endblock %}
+  
+  </body>
+</html>

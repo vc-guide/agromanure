@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      {% block title %}
+
+      {% endblock %}
+    </title>
+    <style>
+      .babu {
+        background-color:rgb(237, 227, 227);
+        display:flex;
+        flex:1;
+        justify-content:center;
+        transition:background-color 0.3s ease; 
+      }
+      .babu:hover {
+        background-color:rgb(21, 143, 109);
+        border-radius:8px;
+        color:white;
+      }
+      .babu a {
+        color:black;
+        font-size:15px;
+        font-weight:500;
+      }
+      .babu a:hover{
+        color:white;
+      }
+      {% block extra_css %}
+      {% endblock %}
+    </style>
+    <link rel="stylesheet" type="text/css" href="product.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+   
+  </head>
+  <body class="rama" style= min-width:1100px;">
+    <div style="background-color: rgb(21, 143, 109);
+    height:30px;
+    margin:0;
+    "></div>
+    {% block content %}
+
+    {% endblock %}
+    <!--
+    <div style="
+    
+    display:flex;
+    flex-direction:row;
+    height:80px;
+    align-items:center;">
+      <div style="height:60px;display:flex;align-items: center;font-size:50px;
+      flex:3;margin-left:25px;min-width:300px;">Agro-Manuare</div>
+      <div style=" display:flex;background-color:lightpink;flex:2;"></div>
+      <div style="display:flex;flex:1;justify-content:center;"><div style="display:flex;flex:1;"></div>
+    <div style="display:flex;flex:1;"><a href="{%url 'logout'%}">logout</a></div></div>
+    </div>-->
+    {% block unwanted-content %}
+    <div style="background-color: rgb(189, 229, 217);
+     height:80px;border-radius:8px;
+     margin-top:3px;
+     margin-bottom:3px;
+     "></div>
+     {% endblock %}
+    <div style="background-color:rgb(237, 227, 227);height:30px;display:flex;flex-direction:row;align-items:center;margin-bottom:4px;">
+      <div class="babu"></div>
+      <div class="babu"><a href="{%url 'home' %}" style="text-decoration:none;">Home</a></div>
+      <div class="babu"><a href="{%url 'Products' %}" style="text-decoration:none;">Products</a></div>
+      <div class="babu"><a href="{%url 'vieworders' %}" style="text-decoration:none;">My orders</a></div>
+      <div class="babu"><a href="{%url 'eventsurl' %}" style="text-decoration:none;">Events</a></div>
+      <div class="babu"><a href="{%url 'contactsurl' %}" style="text-decoration:none;">Contact us</a></div>
+      <div class="babu"><a href="{%url 'about' %}" style="text-decoration:none;">About us</a></div>
+      <div class="babu"></div>
+    </div>
+
+    {% block cor %}
+
+
+
+    {% endblock %}
+    
+
+    <div style="text-align:center;background-color: rgb(21, 143, 109) ;margin-bottom:0;margin-top:3px;width:100%;padding:5px;height:26px;">
+      <p style="font-size:14px;font-weight:500;"> © 2022 Agriculture Department. All Rights Reserved</p>      </div>
+  
+  
+          
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+ 
+  </body>
+</html>

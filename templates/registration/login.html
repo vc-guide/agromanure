@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <style>
+      .formclass{
+        margin-left:15px;
+        margin-top:15px;
+        font-size:17px;
+        font-weight:bold;
+      }
+      .login-button {
+        font-size:15px; 
+        margin-top:20px;
+        width:75px;
+     }
+     .new-button {
+      margin-top:15px;
+
+     }
+    </style>
+  </head>
+  <body>
+    <div style="background-color: rgb(21, 143, 141);
+    height:30px;
+    margin:0;
+    "></div>
+     <div style="background-color: rgb(189, 229, 217);
+     height:80px;border-radius:8px;
+     margin-top:3px;
+     "></div>
+
+     <div style="display:grid;
+      height:250px;
+     margin-top:30px;
+     grid-template-columns:1fr 3fr 1fr">
+      <div></div>
+      <div style="background-color:rgb(189, 229, 217);
+      border:2px solid rgb(74,133,132);
+      border-radius:10px;display:flex;
+      justify-content: center;">
+    <form class="formclass" method="post">
+      {%csrf_token%}
+      {{form.as_p}}
+      <input class="login-button" type="submit" value="Login"><br><br>
+      <div class="new-button"><a href="{%url 'signup'%}">New User</a></div>
+    </form>  
+    </div>
+      <div></div>
+     </div>
+  </body>
+
+</html>

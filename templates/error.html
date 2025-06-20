@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}Not founded{% endblock %}
+{% block cor %}
+     <div style="margin-top:20px;text-align:center;"> <h1>{{d.msg}}</h1></div>
+     <div><a href="{%url 'productview' context.product.pro_name %}"><input style="height:30px;width:100px;color:red;background-color:rgb(181, 229, 228);border:none;border-radius:12px;" type="submit" value="Back"></a></div>
+{% endblock %}

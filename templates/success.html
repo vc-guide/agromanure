@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}order summery{% endblock %}
+{% block extra_css %}
+.sec{
+  flex:1
+}
+{% endblock %}
+{% block cor %}
+ <div style="display:grid; grid-template-columns:1fr 1fr 1.5fr;height:430px;">
+  <div style="background-color:rgb(21, 143, 141);border-radius:20px;display:flex;align-items:center;justify-content:center;padding:10px;">
+  <img src={{p_img}} style="height:340;width:270px;">
+  </div>
+  <div style="text-align:center;display:flex;flex-direction:column;background-color: rgb(189, 229, 217);border-radius:20px;margin-left:8px;">
+  <div class="sec"><h3>Product name:{{p_name}}</h3></div>
+  <div class="sec"><h3>Quantity:{{p_q}}</h3></div>
+  <div class="sec"><h3>Total Price:{{p_tp}}</h3></div>
+  <div class="sec"><h3>Address:{{p_address}}</h3></div>
+  <div class="sec"><h3>Phone No:{{p_ph}}</h3></div>
+  </div>
+  <div style="background-color: rgb(21, 143, 141);border-radius:20px;margin-left:8px;text-align:center;place-items:center;">
+  <h1>{{msg}}</h1>
+  <a href="{%url 'Products' %}"><input style="height:25px;width:80px;color:red;background-color:rgb(181, 229, 228);border:none;border-radius:12px;" type="submit" value="Back"></a>
+  </div>
+  </div>
+  {% endblock %}
+
+ 

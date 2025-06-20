@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block title %} View Product {% endblock %}
+    {% block extra_css %}
+      #interface{
+        position:fixed;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        background-color:rgb(189, 229, 217);
+        padding:20px;
+        border:1px solid #ddd;
+        box-shadow:0 0 10px rgba(0,0,0,0.2);
+        display:none;
+        height:400px;
+        width:700px;
+      }
+    {% endblock %}
+  {% block cor %}
+    <!--<h1>{{product.pro_name}}</h1>-->
+    <div style="background-color: rgb(21, 143, 141);
+    height:30px;
+    margin:0;
+    "></div>
+     <div style="background-color: rgb(189, 229, 217);
+     height:80px;border-radius:8px;
+     margin-top:3px;
+     margin-bottom :10px;
+     "></div>
+
+      <div style="display:grid;
+      grid-template-columns:1fr 1fr;">
+        <div><img style="height:300px;width:250px;" src={{product.pro_img.url}} >
+        <h3 style="margin-top:15px;margin-bottom:20px;">{{product.pro_name}}</h3>
+        <h1>Rs.{{product.pro_price}}</h1>
+      
+      </div>
+      <div style="text-align:center;">
+    <div style="height:320px;">  <h3 style="text-decoration:underline;margin-top:15px;">Product Description</h3>
+      <h4>{{product.pro_dis}}</h4></div>
+     <div > <button style="width:120px;background-color:rgb(26, 151, 97);" id="open-btn">BuyNow</button></div>
+      </div>
+
+      <h1>{{msg}}</h1>
+
+      <div id="interface" style="display:none;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;">
+      <div>
+          <h2>{{product.pro_name}}</h2>
+          <hr>
+          {% if product.quantity > 0 %}
+            <label style="background-color: rgb(10, 204, 146);font-weight:medium;padding:3px;font-size:13px;width:60px;border:solid 1px black;">In Stock</label>
+          {% else %}
+            <label style="background-color: rgb(240, 29, 29);font-weight:medium;padding:3px;font-size:13px;width:80px;border:solid 1px black;">Out of Stock</label>
+          {% endif %}  
+          <div class="input-group-text-center mb-3" style="display:flex;flex-direction:row;height:20px;margin-top:10px;">
+                <label for="Quantity" style="font-weight:bold;font-size:15px;"> Add Quantity(Kg) </label>
+                <div style="margin-left:10px;display:flex;flex-direction:row;">
+                <button class="input-group-text decrement-btn" style="background-color:rgb(194, 202, 200);"onclick="decrement()">-</button>
+                <input type="text" name="quantity" id="getvalue" readonly style="text-align:center;width:35px;border-radius:4px;border:solid;border-width:1px;" value="1">
+                <button class="input-group-text increment-btn" style="background-color:rgb(194, 202, 200);" onclick="increment();">+</button>
+                </div>             
+          </div>
+          <h3 id="pricetag">Rs.{{product.pro_price}}</h3>
+          <button style="margin-top:90px;width:80px;" id="close-btn">Back</button> 
+          </div>
+          <div>
+            <form action="{%url 'ordering' %}" method="Post">
+            {%csrf_token%}
+            <input type="hidden" id ="pro_id" name="pro_id" value="{{product.id}}">
+            <input type="hidden" id="pro_nm" name="pro_nm" value="{{product.pro_name}}">
+            <input type="hidden" id="pro_pr" name="pro_pr" value="{{product.pro_price}}">
+            <input type="hidden" id="qt" name="qt" value="1" >
+            <input type="hidden" id="tc" name="tc" value="{{product.pro_price}}">
+            <input type="hidden" id="img" name="img" value="{{product.pro_img.url}}">
+             Name:    <input type="text" name="name"><br><br>
+             Delivery Address: <textarea id="address" name="address" rows="4" cols="30"></textarea><br><br>
+             Pincode: <input type="number" id="pincode" name='pincode' pattern="[0-9]{6}" placeholder="Enter 6-digit pincode"><br><br> 
+             Phone :  <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter 10-digits Phone number"><br><br>      
+                      <input type='submit' style="border:solid 2px;" value="Place Order"><br>
+            </form>
+          </div>
+          </div>
+      </div>
+     <script>
+      document.getElementById('open-btn').addEventListener('click',function(){
+        document.getElementById('interface').style.display ='block';});
+      
+      document.getElementById('close-btn').addEventListener('click',function(){
+        document.getElementById('interface').style.display='none';})
+
+
+      function increment(){
+       t = document.getElementById('getvalue').value;
+       b = parseInt(t);
+       p={{product.pro_price}};
+       if (b < {{product.quantity}}) {
+       b+=1;
+       tp=p*b;
+       document.getElementById('getvalue').value=b;
+       document.getElementById('pricetag').innerHTML="Rs."+tp.toFixed(2);
+       document.getElementById('qt').value=b;
+       document.getElementById('tc').value=tp.toFixed(2);
+      }
+    }
+
+    function decrement(){
+      t = document.getElementById('getvalue').value;
+      b = parseInt(t);
+      p={{product.pro_price}};
+      if (b >= 2) {
+      b-=1;
+      tp=b*p;
+      document.getElementById('getvalue').value=b;
+      document.getElementById('pricetag').innerHTML=tp;
+      document.getElementById('qt').value=b;
+      document.getElementById('tc').value=tp.toFixed(2);
+     }
+   }
+  </script>
+  {% endblock %}   
+  
