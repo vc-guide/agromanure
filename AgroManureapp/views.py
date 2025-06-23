@@ -7,8 +7,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Order_details
 import decimal
+from .serializers import *
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 # Create your views here.
+
+class APIthings(APIView):
+  def get(self, request):
+    queryset = products.objects.all()
+    serializer = ProductsSerializer(queryset, many=True)
+    return Response(serializer.data)
+
 def loginview(request):
   uname=request.POST['username']
   pwd=request.POST['password']

@@ -1,6 +1,7 @@
 from django.urls import path
 from django.conf import settings
 from .import views
+from .views import *
 
 urlpatterns= [
   path("",views.home,name="home"),
@@ -14,5 +15,6 @@ urlpatterns= [
   path('vieworders',views.orders,name='vieworders'),
   path('eventsurl/',views.eventview,name="eventsurl"),
   path("contactsurl",views.contactview, name="contactsurl"),
+  path("apiview/",APIthings.as_view())
  
 ] 
